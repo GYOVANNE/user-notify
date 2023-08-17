@@ -27,22 +27,26 @@ class UserNotification extends Notification
      */
     public function via(object $notifiable): array
     {
+        /*
+            Para outros channels como celular, configurar mecanismo
+            como firebase ou twilio, por exemplo
+        */
         return ['mail','database'];
     }
 
     /**
-     * Get the mail representation of the notification.
+     * Send mail notification
      */
     public function toMail(object $notifiable)//: MailMessage
     {
         return (new MailMessage)
-                    ->from('noreply@example.com.br', 'Gyovanne')
+                    ->from('noreply@example.com.br', env('APP_NAME'))
                     ->subject($this->data['subject'])
                     ->line($this->data['message']);
     }
 
     /**
-     * Get the array representation of the notification.
+     * Save data in database
      *
      * @return array<string, mixed>
      */
