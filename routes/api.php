@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('/inbox', InBoxUserController::class);
+Route::post('/inbox', [InBoxUserController::class, 'store']);
 
