@@ -20,7 +20,7 @@ class InBoxUser extends Model
     ];
 
     public static $rules = [
-        'user_id'=>'required',
+        'user_id'=>'required|exists:users,id',
         'subject'=>'required|string|max:255',
         'message'=>'required|string'
     ];
